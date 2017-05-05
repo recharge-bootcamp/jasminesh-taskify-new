@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="script/script.js"></script>
+<body ng-app="myApp" ng-controller="todoCtrl">
+
+<h2>TASKIFY</h2>
+
+<form class="task-form" ng-submit="todoAdd()">
+	<div class="add-task">
+		<input type="text" ng-model="todoInput" size="40" placeholder="Add New">
+		<input type="submit" value="Add New">
+	</div>
+	
+	<!--<div class="task-buttons">
+		<button ng-click="addImg()">Add Image</button>
+	</div> -->
+	
+	<div ng-repeat="x in todoList">
+		<input type="checkbox" ng-model="x.done"> <span ng-bind="x.todoText"></span>
+	</div>
+
+	<div class="task-buttons">
+		<button ng-click="remove()">Remove</button>
+		<button ng-click="archive()">Archive</button>
+		<button ng-click="complete()">Complete</button>
+	</div>
+
+	<div class="tasks-div">
+		<h3>Display removed items</h3>
+		<div ng-repeat="i in removeList" id="removediv">
+			<input type="checkbox" ng-model="i.done"> <span ng-bind="i.todoText"></span>
+		</div>
+	</div>
+
+	<div class="tasks-div">
+		<h3>Display archived items</h3>
+		<div ng-repeat="j in archiveList" id="archivediv">
+			<input type="checkbox" ng-model="j.done"> <span ng-bind="j.todoText"></span>
+		</div>
+	</div>
+
+	<div class="tasks-div">
+		<h3>Display completed items</h3>
+		<div ng-repeat="k in completedList" id="completeddiv">
+			<input type="checkbox" ng-model="k.done"> <span ng-bind="k.todoText"></span>
+		</div>
+	</div>
+
+</form>
+<br>
+<br>
+
+<div >
+	<b>Logout</b>
+	<a href="index.html">
+	<img border="0"  src="images/logout.png" width="35" height="35">
+	</a>
+</div>	
+
+</body>
+</html>
